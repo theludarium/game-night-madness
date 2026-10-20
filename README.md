@@ -42,7 +42,7 @@ BoardGameGeek requires every app that reads its data to be registered and to sen
 1. Sign in to BoardGameGeek and open https://boardgamegeek.com/applications.
 2. Register a new application. Suggested details:
    - **Name:** Game Night Madness
-   - **Website:** https://the-ljaw.github.io/game-night-madness/
+   - **Website:** https://theludarium.com/game-night-madness/
    - **What it does:** A free web app that turns a user's owned BGG collection into a voting bracket, so a group can pick a game to play. It reads one user's collection (owned games) and game details (categories, mechanics, weight, player-count poll). Results are cached (collections for 30 minutes, game details for 7 days), details are requested 20 at a time about a second apart, and the app shows the "Powered by BGG" logo linking to BGG.
    - **Commercial or not:** non-commercial, for now. BGG requires a commercial license for any app that earns money (ads, affiliate links, paid features). It's free until 100 paying users or 1,000 ad-supported users.
 3. BGG reviews each application. This one was approved on Oct 5, 2026, as non-commercial (no fees). Once it's approved, create a token on the same page. Keep it private: it goes straight into Cloudflare (step 2.6) and nowhere else, not in this repository or a chat.
@@ -54,7 +54,7 @@ You can do steps 1–5 while BGG reviews the application.
 
 1. Create a free account at https://dash.cloudflare.com.
 2. Go to **Workers & Pages** → **Create application** → **Start with Hello World**. Name it `gnm-bgg` and click **Deploy**.
-3. Click **Edit code**, replace everything in the editor with the contents of [`bgg-helper/worker.js`](https://raw.githubusercontent.com/The-LJAW/game-night-madness/main/bgg-helper/worker.js), and click **Deploy**.
+3. Click **Edit code**, replace everything in the editor with the contents of [`bgg-helper/worker.js`](https://raw.githubusercontent.com/theludarium/game-night-madness/main/bgg-helper/worker.js), and click **Deploy**.
 4. Create a KV namespace for the cache: **Storage & Databases → KV** (Workers KV) → **Create**, and name it `gnm-bgg-cache`. Then open the Worker → **Bindings** → **Add binding** → **KV namespace**, set the variable name to `CACHE`, pick `gnm-bgg-cache`, and click **Add binding**. Cloudflare's built-in cache only works on your own domain, so KV is what lets the helper reuse answers on a `workers.dev` address.
 5. Open the Worker's address (something like `https://gnm-bgg.your-subdomain.workers.dev`). It shows a status page: `running`, `BGG token: not set yet`, `Cache: KV namespace bound as CACHE`.
 6. When BGG has approved the app: in the Worker's **Settings → Variables and Secrets**, click **Add**, choose type **Secret**, name it `BGG_TOKEN`, paste the token as the value, and click **Deploy**. Reload the status page; it should say `BGG token: set`.
@@ -62,7 +62,7 @@ You can do steps 1–5 while BGG reviews the application.
 
 After any change to `bgg-helper/worker.js`, paste it into the Worker again (**Edit code**, replace everything, **Deploy**). The token and the cache stay as they are.
 
-The helper only answers `https://the-ljaw.github.io`. If the app ever moves to its own domain, add a Text variable `ALLOWED_ORIGINS` with the new address (comma-separate several).
+The helper only answers the sites in its Text variable `ALLOWED_ORIGINS` (comma-separated), by default `https://theludarium.com` and `https://theludarium.github.io`.
 
 ### 3. The app switches over by itself
 
@@ -70,7 +70,7 @@ The app already points at the helper (`bggProxy` near the top of `src/app.js`). 
 
 ## Put it online (GitHub Pages, about 3 minutes)
 
-This repository is already live at https://the-ljaw.github.io/game-night-madness/. To set up a copy elsewhere:
+The app lives at https://theludarium.com/game-night-madness/, built into The Ludarium's website. To set up a copy elsewhere:
 
 1. On GitHub, create a new **public** repository, for example `game-night-madness`.
 2. Upload the files in this folder to the repository's main branch.
@@ -112,7 +112,7 @@ Analytics are **off** until `posthogKey` is set near the top of `src/app.js`. Us
 - **Privacy.** Anyone with the link or code can join and vote. The shared bracket data includes the organizer's BGG username (BGG collections are public), so the organizer can rebuild stage 2 on another device.
 - **First load of a big shelf.** The app reads details for every game that fits tonight's players and time, 20 at a time. A 150-game shelf takes several seconds the first time; after that, the phone remembers the details for 30 days.
 - **"Queued" collections.** BGG sometimes answers "queued" the first time it's asked for a collection. The app waits and asks again on its own.
-- **Same site as Dinner Madness.** Both apps live on `the-ljaw.github.io`, so they share browser storage. This app keeps everything under keys that start with `gn.`.
+- **Shared site storage.** On theludarium.com the app shares browser storage with the rest of the site, so it keeps everything under keys that start with `gn.`.
 
 ## For developers
 

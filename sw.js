@@ -3,8 +3,8 @@
    open when the phone is offline. It never shows an old version while the network works: every
    request goes to the network first, and the saved copy is used only when that fails.
    Requests to other sites (the voting relay, the BGG helper, box art) are left alone. */
-const CACHE = 'gnm-shell-v1';
-const SHELL = ['./', 'manifest.webmanifest', 'powered-by-bgg.png', 'icons/icon-192.png'];
+const CACHE = 'gnm-shell-v2';
+const SHELL = ['./', 'manifest.webmanifest', 'powered-by-bgg.png', 'icons/icon-192.png', 'fonts/fraunces-latin-wght-normal.woff2'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).catch(() => {}).then(() => self.skipWaiting()));

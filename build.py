@@ -18,7 +18,7 @@ def read(p):
     return (SRC / p).read_text(encoding='utf-8').strip()
 
 
-icon = ("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='#5B3FD0'/>"
+icon = ("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='#2F5D50'/>"
         "<path d='M6.5 9.5h6.5v13H6.5M13 16h6.5' fill='none' stroke='white' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'/>"
         "<circle cx='23.6' cy='16' r='3.4' fill='white'/></svg>")
 icon_url = 'data:image/svg+xml,' + urllib.parse.quote(icon, safe=" ='/:,.")
@@ -29,8 +29,8 @@ head = f'''<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Game Night Madness</title>
-<meta name="description" content="Can't decide what to play? Pull the games from your BoardGameGeek shelf, seed them into a tournament-style bracket, and let the whole table vote until one game is left standing.">
-<meta name="theme-color" content="#5B3FD0">
+<meta name="description" content="Can't decide what to play? Turn your BoardGameGeek shelf into a bracket, and let the whole table vote from their phones until one game is left.">
+<meta name="theme-color" content="#2F5D50">
 <meta property="og:title" content="Game Night Madness">
 <meta property="og:description" content="Vote on what we play tonight, bracket style.">
 <link rel="icon" href="{icon_url}">
@@ -40,9 +40,7 @@ head = f'''<!doctype html>
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Big+Shoulders+Display:wght@700;800;900&display=swap">
+<link rel="preload" href="fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 {read('palette.css')}
 {read('shared/layout.css')}

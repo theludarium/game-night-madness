@@ -1462,7 +1462,7 @@ function confetti() {
   const dpr = Math.min(2, window.devicePixelRatio || 1), W = innerWidth, H = innerHeight;
   cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   const cs = getComputedStyle(document.documentElement);
-  const cols = ['--accent', '--gold', '--ok', '--ink'].map(v => cs.getPropertyValue(v).trim() || '#5B3FD0');
+  const cols = ['--accent', '--gold', '--ok', '--ink'].map(v => cs.getPropertyValue(v).trim() || '#2F5D50');
   const P = Array.from({length: 120}, () => ({x: W / 2 + (Math.random() - 0.5) * W * 0.3, y: H * 0.3, vx: (Math.random() - 0.5) * 12, vy: -Math.random() * 11 - 4, s: Math.random() * 7 + 5, a: Math.random() * 6.3, va: (Math.random() - 0.5) * 0.35, c: cols[Math.floor(Math.random() * cols.length)]}));
   let t = 0;
   (function frame() {

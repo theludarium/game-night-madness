@@ -53,3 +53,18 @@
 .install-ic{width:48px;height:48px;border-radius:12px;flex:none;display:block}
 .install-acts{align-items:center;gap:8px 18px}
 .install-acts .linkbtn{align-self:center}
+
+/* Ludarium type: Fraunces in sentence case for names and headings, small uppercase
+   labels in the body font. The layout came from Dinner Madness's condensed caps. */
+.brand,.display,h2,.mode b,.mu-t b,.champ-n,.bk-m.champ-box .nm,.chips b,.av{text-transform:none;letter-spacing:-.01em;font-weight:650}
+.display,.champ-n{font-weight:700;line-height:.98}
+.display{font-size:clamp(40px,10.5vw,64px)}
+.champ-n{font-size:clamp(40px,11vw,70px)}
+.mu-t b{font-size:20px;line-height:1.12}
+.btn,.tab,.bk-rl,.mu-vs span,.th::before{font-family:var(--body);font-weight:700}
+.btn{font-size:16px;letter-spacing:.06em}
+.tab{font-size:14px}
+.lockbar .btn{font-size:17px;box-shadow:0 12px 26px -12px rgba(43,30,22,.45)}
+.code-big{font-family:var(--body);font-weight:800}
+.brand{font-size:clamp(16px,4.7vw,21px)}
+body .flip-call b,body .flip-result{text-transform:none;letter-spacing:-.01em;font-weight:650}

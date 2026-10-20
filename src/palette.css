@@ -1,29 +1,33 @@
+/* The Ludarium's palette and type, so the app looks native on theludarium.com.
+   Walnut (ink), Parchment (paper), Felt Green (accent), Lamplight (gold), Stone (lines).
+   Values follow the site's src/styles/tokens.css, in light and dark. */
+@font-face{font-family:"Fraunces Variable";font-style:normal;font-display:swap;font-weight:100 900;src:url(fonts/fraunces-latin-wght-normal.woff2) format("woff2-variations")}
 :root{
-  --paper:#F3F1EC;--card:#FFFFFF;--sunk:#E9E6DF;--ink:#1C1A2E;--ink-2:#34314A;--muted:#625E74;--line:#D4D0C7;--line-2:#E4E1D9;
-  --accent:#5B3FD0;--accent-press:#4A30B5;--accent-ink:#FFFFFF;--accent-soft:#E8E2FB;--accent-text:#5236C4;
-  --gold:#F2B01E;--gold-ink:#2A1E00;--gold-soft:#FCEFC6;
-  --ok:#1E7F55;--ok-soft:#D8EEE2;
+  --paper:#F6EFE3;--card:#FBF7EF;--sunk:#EEE5D6;--ink:#2B1E16;--ink-2:#45362B;--muted:#6B5D4F;--line:#DDD3C3;--line-2:#E8DFD0;
+  --accent:#2F5D50;--accent-press:#244A40;--accent-ink:#F6EFE3;--accent-soft:#DDE9E3;--accent-text:#2F5D50;
+  --gold:#E0A23B;--gold-ink:#2B1E16;--gold-soft:#F3E2C0;
+  --ok:#2E7346;--ok-soft:#DCEBDD;
   --logo-ground:#FFFFFF; /* BGG's logo has navy text on a clear background, so it always sits on white */
-  --shadow:0 1px 0 rgba(28,26,46,.05),0 10px 24px -16px rgba(28,26,46,.35);
-  --display:"Big Shoulders Display","Oswald","Arial Narrow",Impact,sans-serif;
-  --body:"Barlow","Helvetica Neue",Arial,system-ui,sans-serif;
+  --shadow:0 1px 0 rgba(43,30,22,.05),0 10px 24px -16px rgba(43,30,22,.35);
+  --display:"Fraunces Variable",Georgia,"Times New Roman",serif;
+  --body:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --paper:#110F1C;--card:#1B1830;--sunk:#161427;--ink:#EDEBF5;--ink-2:#D2CFE0;--muted:#A09CB4;--line:#302C48;--line-2:#25223A;
-    --accent:#7159EC;--accent-press:#634BE0;--accent-ink:#FFFFFF;--accent-soft:#2A2350;--accent-text:#A99AFF;
-    --gold:#FFC53D;--gold-ink:#231800;--gold-soft:#3A2E12;
-    --ok:#5CC592;--ok-soft:#173327;
+    --paper:#1C140F;--card:#2B1E16;--sunk:#241A13;--ink:#F6EFE3;--ink-2:#E4D9C8;--muted:#B9AD9C;--line:#4A3B30;--line-2:#3A2D24;
+    --accent:#8CC2B0;--accent-press:#A9D3C5;--accent-ink:#1C140F;--accent-soft:#24372F;--accent-text:#8CC2B0;
+    --gold:#E0A23B;--gold-ink:#2B1E16;--gold-soft:#3A2C18;
+    --ok:#7CC594;--ok-soft:#1E3324;
     --shadow:0 1px 0 rgba(0,0,0,.35),0 12px 28px -16px rgba(0,0,0,.7);
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --paper:#110F1C;--card:#1B1830;--sunk:#161427;--ink:#EDEBF5;--ink-2:#D2CFE0;--muted:#A09CB4;--line:#302C48;--line-2:#25223A;
-  --accent:#7159EC;--accent-press:#634BE0;--accent-ink:#FFFFFF;--accent-soft:#2A2350;--accent-text:#A99AFF;
-  --gold:#FFC53D;--gold-ink:#231800;--gold-soft:#3A2E12;
-  --ok:#5CC592;--ok-soft:#173327;
+  --paper:#1C140F;--card:#2B1E16;--sunk:#241A13;--ink:#F6EFE3;--ink-2:#E4D9C8;--muted:#B9AD9C;--line:#4A3B30;--line-2:#3A2D24;
+  --accent:#8CC2B0;--accent-press:#A9D3C5;--accent-ink:#1C140F;--accent-soft:#24372F;--accent-text:#8CC2B0;
+  --gold:#E0A23B;--gold-ink:#2B1E16;--gold-soft:#3A2C18;
+  --ok:#7CC594;--ok-soft:#1E3324;
   --shadow:0 1px 0 rgba(0,0,0,.35),0 12px 28px -16px rgba(0,0,0,.7);
   color-scheme:dark;
 }

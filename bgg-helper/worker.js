@@ -18,7 +18,7 @@
  * Settings (Cloudflare dashboard -> the Worker -> Settings -> Variables and Secrets):
  *   BGG_TOKEN        Secret. The token from boardgamegeek.com/applications. Required.
  *   ALLOWED_ORIGINS  Text. Optional. Comma-separated sites allowed to call this helper.
- *                    Default: https://the-ljaw.github.io (only change it for a custom domain)
+ *                    Default: https://theludarium.com,https://theludarium.github.io
  * Binding (the Worker -> Bindings): a KV namespace named CACHE, so answers are reused
  * (Cloudflare's built-in cache only works once the Worker is on your own domain).
  */
@@ -73,7 +73,7 @@ async function runCheck(token) {
 export default {
   async fetch(req, env, ctx) {
     const url = new URL(req.url);
-    const allowed = String(env.ALLOWED_ORIGINS || 'https://the-ljaw.github.io')
+    const allowed = String(env.ALLOWED_ORIGINS || 'https://theludarium.com,https://theludarium.github.io')
       .split(',').map(s => s.trim().replace(/\/+$/, '')).filter(Boolean);
     const origin = req.headers.get('Origin') || '';
     const token = String(env.BGG_TOKEN || '').trim();

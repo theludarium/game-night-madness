@@ -43,7 +43,7 @@ await t('status page says what is set up, never the token', async () => {
   assert.match(txt, /Allowed sites: https:\/\/the-ljaw\.github\.io, http:\/\/localhost:8765/);
   const bare = await (await get('/', {}, {})).text();
   assert.match(bare, /BGG token: not set yet/);
-  assert.match(bare, /Allowed sites: https:\/\/the-ljaw\.github\.io\n/, 'default site when ALLOWED_ORIGINS is not set');
+  assert.match(bare, /Allowed sites: https:\/\/theludarium\.com, https:\/\/theludarium\.github\.io\n/, 'default site when ALLOWED_ORIGINS is not set');
   const kv = await (await get('/', {}, {BGG_TOKEN: 'x', CACHE: {}})).text();
   assert.match(kv, /Cache: KV namespace bound as CACHE/);
 });
